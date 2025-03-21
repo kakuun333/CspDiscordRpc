@@ -1,0 +1,6 @@
+/.vs
+/Build
+/CspDiscordRpc
+/packages
+/vcpkg
+/vcpkg_installed
