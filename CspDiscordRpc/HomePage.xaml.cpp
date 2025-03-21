@@ -65,7 +65,7 @@ winrt::hstring HomePage::State()
 
 void HomePage::State(winrt::hstring const& value)
 {
-    m_state = std::vformat(GetRpcFormatText(static_cast<ERpcTextLanguage>(Config::GetInstance()->RpcTextLanguage), ERpcTextType::State).c_str(), std::make_wformat_args(value));
+    m_state = (value.empty()) ? L"" : std::vformat(GetRpcFormatText(static_cast<ERpcTextLanguage>(Config::GetInstance()->RpcTextLanguage), ERpcTextType::State).c_str(), std::make_wformat_args(value));
 }
 
 winrt::hstring HomePage::Details()
@@ -75,7 +75,7 @@ winrt::hstring HomePage::Details()
 
 void HomePage::Details(winrt::hstring const& value)
 {
-    m_details = std::vformat(GetRpcFormatText(static_cast<ERpcTextLanguage>(Config::GetInstance()->RpcTextLanguage), ERpcTextType::Details).c_str(), std::make_wformat_args(value));
+    m_details = (value.empty()) ? L"" : std::vformat(GetRpcFormatText(static_cast<ERpcTextLanguage>(Config::GetInstance()->RpcTextLanguage), ERpcTextType::Details).c_str(), std::make_wformat_args(value));
 }
 
 winrt::hstring HomePage::LargeImageText()
@@ -85,7 +85,7 @@ winrt::hstring HomePage::LargeImageText()
 
 void HomePage::LargeImageText(winrt::hstring const& value)
 {
-    m_largeImageText = std::vformat(GetRpcFormatText(static_cast<ERpcTextLanguage>(Config::GetInstance()->RpcTextLanguage), ERpcTextType::LargeImageText).c_str(), std::make_wformat_args(value));
+    m_largeImageText = (value.empty()) ? L"" : std::vformat(GetRpcFormatText(static_cast<ERpcTextLanguage>(Config::GetInstance()->RpcTextLanguage), ERpcTextType::LargeImageText).c_str(), std::make_wformat_args(value));
 }
 
 winrt::hstring HomePage::SmallImageSource()
