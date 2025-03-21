@@ -4,6 +4,7 @@
     {
         CspWorkCacheData();
         CspWorkCacheData(String Name, String ThumbnailPath, String CspVersion, String CacheDataPath, String TotalWorkingTime);
+        Boolean IsEmpty();
         String Name { get; };
         String ThumbnailPath { get; };
         String CspVersion { get; };

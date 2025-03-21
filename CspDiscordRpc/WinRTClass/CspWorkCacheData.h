@@ -16,6 +16,15 @@ struct CspWorkCacheData : CspWorkCacheDataT<CspWorkCacheData>
 		, m_totalWorkingTime(TotalWorkingTime)
         {}
 
+	bool IsEmpty() const
+    {
+        return m_name.empty()
+            && m_thumbnailPath.empty()
+            && m_cspVersion.empty()
+            && m_cacheDataPath.empty()
+            && m_totalWorkingTime.empty();
+    }
+
     // Name
     winrt::hstring Name() const { return m_name; }
 

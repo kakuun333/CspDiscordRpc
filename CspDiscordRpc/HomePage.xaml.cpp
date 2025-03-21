@@ -142,6 +142,12 @@ std::vector<std::filesystem::path> HomePage::GetCspWorkCachePaths()
 
 winrt::CspDiscordRpc::CspWorkCacheData HomePage::GetCspWorkCacheData(const std::filesystem::path& cspWorkCachePath)
 {
+    if (cspWorkCachePath.empty())
+    {
+        std::cout << "HomePage::GetCspWorkCacheData: cspWorkCachePath.empty()" << std::endl;
+        return {};
+    }
+
     FileManager* fileManager = FileManager::GetInstance();
 
     std::string catalogXmlContent = fileManager->ReadFile(cspWorkCachePath / "catalog.xml");
@@ -171,9 +177,9 @@ winrt::CspDiscordRpc::CspWorkCacheData HomePage::GetCspWorkCacheData(const std::
     }
     else
     {
-        std::cerr << "XML parsed with errors, attr value: [" << doc.child("catalog").attribute("attr").value() << "]" << std::endl;
-        std::cerr << "Error description: " << result.description() << std::endl;
-        std::cerr << "Error offset: " << result.offset << " (error at [..." << (catalogXmlContent.c_str() + result.offset) << "]" << std::endl;
+        std::cout << "XML parsed with errors, attr value: [" << doc.child("catalog").attribute("attr").value() << "]" << std::endl;
+        std::cout << "Error description: " << result.description() << std::endl;
+        std::cout << "Error offset: " << result.offset << " (error at [..." << (catalogXmlContent.c_str() + result.offset) << "]" << std::endl;
     }
 
     return {};
@@ -228,7 +234,9 @@ winrt::IAsyncAction HomePage::Button_ChooseCspWork_Click(winrt::IInspectable con
 	for (const auto& path : this->GetCspWorkCachePaths())
 	{
 		winrt::CspDiscordRpc::CspWorkCacheData cspWorkCacheData = GetCspWorkCacheData(path);
-        std::wcout << cspWorkCacheData.ThumbnailPath() << '\n';
+
+		if (cspWorkCacheData.IsEmpty()) continue;
+
 		m_chooseCspWorkDialogPage.CspWorkCacheData().Append(cspWorkCacheData);
 	}
 
@@ -256,10 +264,10 @@ winrt::IAsyncAction HomePage::Button_ChooseCspWork_Click(winrt::IInspectable con
         TextBlock_ChoosedCspWork().Text(selectedCspWorkCacheData.Name());
 
         // Debug
-        std::cout << winrt::to_string(selectedCspWorkCacheData.Name()) << '\n';
-        std::cout << winrt::to_string(selectedCspWorkCacheData.ThumbnailPath()) << '\n';
-        std::cout << winrt::to_string(selectedCspWorkCacheData.CspVersion()) << '\n';
-        std::cout << winrt::to_string(selectedCspWorkCacheData.CacheDataPath()) << '\n';
+        std::cout << "Name: " << winrt::to_string(selectedCspWorkCacheData.Name()) << '\n';
+        std::cout << "ThumbnailPath: " << winrt::to_string(selectedCspWorkCacheData.ThumbnailPath()) << '\n';
+        std::cout << "CspVersion: " << winrt::to_string(selectedCspWorkCacheData.CspVersion()) << '\n';
+        std::cout << "CacheDataPath: " << winrt::to_string(selectedCspWorkCacheData.CacheDataPath()) << '\n';
 	});
     
     m_chooseCspWorkContentDialog.CloseButtonText(resourceLoader.GetString(L"Close"));
