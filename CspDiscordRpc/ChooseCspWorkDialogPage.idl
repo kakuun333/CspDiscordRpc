@@ -1,0 +1,12 @@
+﻿import "WinRtClass/CspWorkCacheData.idl";
+
+namespace CspDiscordRpc
+{
+    [default_interface]
+    runtimeclass ChooseCspWorkDialogPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        ChooseCspWorkDialogPage();
+        Windows.Foundation.Collections.IVector<CspWorkCacheData> CspWorkCacheData { get; };
+        CspWorkCacheData SelectedCspWorkCacheData { get; set; };
+    }
+}

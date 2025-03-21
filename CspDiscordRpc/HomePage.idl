@@ -1,0 +1,13 @@
+﻿namespace CspDiscordRpc
+{
+    [default_interface]
+    runtimeclass HomePage : Microsoft.UI.Xaml.Controls.Page
+    {
+        HomePage();
+        String State { get; set; };
+        String Details { get; set; };
+        String LargeImageText { get; set; };
+        String SmallImageSource { get; };
+        String SmallImageText { get; };
+    }
+}

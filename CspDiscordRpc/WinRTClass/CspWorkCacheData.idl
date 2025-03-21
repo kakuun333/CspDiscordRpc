@@ -1,0 +1,13 @@
+﻿namespace CspDiscordRpc
+{
+    runtimeclass CspWorkCacheData
+    {
+        CspWorkCacheData();
+        CspWorkCacheData(String Name, String ThumbnailPath, String CspVersion, String CacheDataPath, String TotalWorkingTime);
+        String Name { get; };
+        String ThumbnailPath { get; };
+        String CspVersion { get; };
+        String CacheDataPath { get; };
+        String TotalWorkingTime { get; };
+    }
+}

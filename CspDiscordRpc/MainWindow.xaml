@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="CspDiscordRpc.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CspDiscordRpc"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="CspDiscordRpc">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- AppTitleBar 高度固定 -->
+            <RowDefinition Height="Auto"/>
+            <!-- NavigationView 填滿剩餘空間 -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!-- AppTitleBar -->
+        <Grid x:Name="AppTitleBar" Height="48" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
+                <ColumnDefinition x:Name="IconColumn" Width="Auto"/>
+                <ColumnDefinition x:Name="TitleColumn" Width="Auto"/>
+                <ColumnDefinition x:Name="LeftDragColumn" Width="*"/>
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="TitleBarIcon" 
+                Source="ms-appx:///Assets/StoreLogo.png"
+                Grid.Column="1"
+                Width="32" Height="32"
+                Margin="8,0,4,0"/>
+            <TextBlock x:Name="TitleBarTextBlock"
+                x:Uid="ApplicationName"
+                Text="CSP Discord RPC" 
+                FontSize="12epx"
+                Grid.Column="2"
+                VerticalAlignment="Center">
+            </TextBlock>
+        </Grid>
+        <!-- NavigationView -->
+        <NavigationView
+            x:Name="MainNavigationView"
+            ItemInvoked="MainNavigationView_ItemInvoked"
+            Grid.Row="1"
+            IsSettingsVisible="True"
+            IsBackEnabled="False"
+            IsBackButtonVisible="Collapsed">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="MainWindowHomeItem" x:Uid="MainWindowHomeItem"
+                                    Content="Home"
+                                    Icon="Home"/>
+            </NavigationView.MenuItems>
+            <Frame x:Name="ContentFrame"/>
+        </NavigationView>
+    </Grid>
+</Window>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="CspDiscordRpc.ChooseCspWorkDialogPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CspDiscordRpc"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+
+    <GridView x:Name="GridView_ClipFileItem" SelectionMode="Single" IsItemClickEnabled="True" ItemsSource="{x:Bind CspWorkCacheData}" ItemClick="GridView_ClipFileItem_ItemClick">
+        <GridView.ItemTemplate>
+            <DataTemplate x:DataType="local:CspWorkCacheData">
+                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0">
+                        <Image Source="{x:Bind ThumbnailPath}" Stretch="UniformToFill"/>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text="{x:Bind Name}" HorizontalAlignment="Center" FontSize="12" Foreground="White"/>
+                    </StackPanel>
+                    
+                </Grid>
+            </DataTemplate>
+        </GridView.ItemTemplate>
+        <!--
+        <ListView.Items>
+            <x:String>One</x:String>
+            <ListViewItem {>Two</ListViewItem>
+        </ListView.Items>
+        -->
+    </GridView>
+</Page>

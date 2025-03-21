@@ -1,0 +1,8 @@
+namespace CspDiscordRpc
+{
+    [default_interface]
+    runtimeclass TurnOnDiscordRpcDialogPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        TurnOnDiscordRpcDialogPage();
+    }
+}
