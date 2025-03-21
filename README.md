@@ -2,28 +2,45 @@
 <p align="center">
   <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Logo.png">
 </p>
-<h1 align="center">CspDiscordRpc</h1>
+<h3 align="center">CspDiscordRpc</h1>
+<h4 align="center">
+   A Discord Rich Presence Client for CLIP STUDIO PAINT.
+</h4>
 <h3 align="center">
-   Discord RPC for CLIP STUDIO PAINT.
+  <a href="./README_TW.md">繁體中文</a>｜<a href="./README_JP.md">日本語</a>
 </h3>
+
+## Features
+1. Search exist CSP works for more information
+   - Work Name
+   - Total Working Time
+   - CSP Version of Work (Large Image Text)
+
+2. Support Languages
+   - English
+   - Japanese
+   - Traditional Chinese
+   - Simplified Chinese
 
 ## Requirement
 
 1. OS: Windows 10 version 17763.0 or higher
-2. [Microsoft Visual C++ Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) Installed
+2. Latest [Microsoft Visual C++ Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) Installed (Architecture x64)
 
-## Features
-1. Search exist CSP works for more information
 
-2. Support Language
- - English
- - Japanese
- - Traditional Chinese
- - Simplified Chinese
+## Usage
+1. Execute `CspDiscordRpc.exe`  
+<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Home.png">   
+
+2. (Optional but recommend) Choose a CSP work for more information   
+<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/ChooseWork.png">  
+
+3. Select a RPC Text Language that you like
 
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_English.png"> 
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_Japanese.png">    
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_TraditionalChinese.png">  
-<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_SimplifiedChinese.png">   
-<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Home.png">    
-<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/ChooseWork.png">  
+<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_SimplifiedChinese.png">    
+
+4. Turn on Discord RPC option
+
