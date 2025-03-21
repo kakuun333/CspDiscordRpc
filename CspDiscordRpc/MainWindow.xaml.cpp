@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "MainWindow.xaml.h"
 #if __has_include("MainWindow.g.cpp")
 #include "MainWindow.g.cpp"
@@ -33,13 +33,17 @@ void MainWindow::InitializeComponent()
     // Hide system title bar.
     ExtendsContentIntoTitleBar(true);
 
-    // MainWindow ªì©l¤Æ®É¾É¦V HomePage
+    // MainWindow åˆå§‹åŒ–æ™‚å°å‘ HomePage
     ContentFrame().Navigate(winrt::xaml_typename<winrt::CspDiscordRpc::HomePage>(), nullptr);
+
+	const winrt::hstring VERSION = L"1.0.0";
+    // æ·»åŠ ç‰ˆæœ¬ç·¨è™Ÿ
+    TitleBarTextBlock().Text(winrt::format(L"{} v{}", TitleBarTextBlock().Text(), VERSION));
 }
 
 void MainWindow::MainNavigationView_ItemInvoked(winrt::NavigationView const& sender, winrt::NavigationViewItemInvokedEventArgs const& args)
 {
-    winrt::TypeName pageTypeName{ winrt::hstring() }; // ªì©l¤Æ TypeName
+    winrt::TypeName pageTypeName{ winrt::hstring() }; // åˆå§‹åŒ– TypeName
 
     if (args.InvokedItem() == MainWindowHomeItem().Content())
     {
@@ -50,7 +54,7 @@ void MainWindow::MainNavigationView_ItemInvoked(winrt::NavigationView const& sen
         pageTypeName = winrt::xaml_typename<winrt::CspDiscordRpc::SettingsPage>();
     }
 
-    // ÀË¬d·í«e­¶­±¬O§_¤w¸g¬O¥Ø¼Ğ­¶­±
+    // æª¢æŸ¥ç•¶å‰é é¢æ˜¯å¦å·²ç¶“æ˜¯ç›®æ¨™é é¢
     if (ContentFrame().CurrentSourcePageType().Name != pageTypeName.Name)
     {
         ContentFrame().Navigate(pageTypeName, nullptr);
