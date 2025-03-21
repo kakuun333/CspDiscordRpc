@@ -10,8 +10,12 @@
     <Page Include="HomePage.xaml">
       <Filter>WinUI</Filter>
     </Page>
-    <Page Include="ChooseCspWorkDialogPage.xaml" />
-    <Page Include="TurnOnDiscordRpcDialogPage.xaml" />
+    <Page Include="ChooseCspWorkDialogPage.xaml">
+      <Filter>WinUI</Filter>
+    </Page>
+    <Page Include="TurnOnDiscordRpcDialogPage.xaml">
+      <Filter>WinUI</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
