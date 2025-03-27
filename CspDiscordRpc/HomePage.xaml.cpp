@@ -52,9 +52,7 @@ void HomePage::InitializeComponent()
 	winrt::CspDiscordRpc::CspWorkCacheData cspWorkCacheData = GetCspWorkCacheData(std::filesystem::path{ config->CacheDataPath });
     m_chooseCspWorkDialogPage.SelectedCspWorkCacheData(cspWorkCacheData);
 
-	this->State(cspWorkCacheData.Name());
-    this->Details(cspWorkCacheData.TotalWorkingTime());
-    this->LargeImageText(cspWorkCacheData.CspVersion());
+    this->SetRpcProperties(cspWorkCacheData);
     TextBlock_ChoosedCspWork().Text(cspWorkCacheData.Name());
 }
 
@@ -224,6 +222,13 @@ winrt::hstring HomePage::GetRpcFormatText(const ERpcTextLanguage& rpcTextLanguag
 
 }
 
+void HomePage::SetRpcProperties(const winrt::CspDiscordRpc::CspWorkCacheData& cspWorkCacheData/* = winrt::CspDiscordRpc::CspWorkCacheData{}*/)
+{
+	this->State(cspWorkCacheData.Name());
+	this->Details(cspWorkCacheData.TotalWorkingTime());
+	this->LargeImageText(cspWorkCacheData.CspVersion());
+}
+
 winrt::IAsyncAction HomePage::Button_ChooseCspWork_Click(winrt::IInspectable const& sender, winrt::RoutedEventArgs const& e)
 {
     winrt::ResourceLoader resourceLoader = winrt::ResourceLoader::GetForViewIndependentUse();
@@ -249,9 +254,7 @@ winrt::IAsyncAction HomePage::Button_ChooseCspWork_Click(winrt::IInspectable con
         winrt::CspDiscordRpc::CspWorkCacheData selectedCspWorkCacheData = m_chooseCspWorkDialogPage.SelectedCspWorkCacheData();
 
 		// Set member variables
-		this->State(selectedCspWorkCacheData.Name());
-		this->Details(selectedCspWorkCacheData.TotalWorkingTime());
-		this->LargeImageText(selectedCspWorkCacheData.CspVersion());
+        this->SetRpcProperties(selectedCspWorkCacheData);
   //      m_state = winrt::format(GetRpcFormatText(static_cast<ERpcTextLanguage>(config->RpcTextLanguage), ERpcTextType::State), selectedCspWorkCacheData.Name());
 		//m_details = winrt::format(GetRpcFormatText(static_cast<ERpcTextLanguage>(config->RpcTextLanguage), ERpcTextType::Details), selectedCspWorkCacheData.TotalWorkingTime());
 		//m_largeImageText = winrt::format(L"CLIP STUDIO PAINT Ver.{}", selectedCspWorkCacheData.CspVersion());
@@ -308,9 +311,7 @@ void HomePage::ComboBox_RpcTextLanguage_SelectionChanged(winrt::IInspectable con
 
     // Update Properties
     winrt::CspDiscordRpc::CspWorkCacheData selectedCspWorkCacheData = m_chooseCspWorkDialogPage.SelectedCspWorkCacheData();
-    this->State(selectedCspWorkCacheData.Name());
-    this->Details(selectedCspWorkCacheData.TotalWorkingTime());
-    this->LargeImageText(selectedCspWorkCacheData.CspVersion());
+    this->SetRpcProperties(selectedCspWorkCacheData);
 }
 
 
