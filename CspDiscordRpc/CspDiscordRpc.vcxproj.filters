@@ -35,7 +35,6 @@
     <ClCompile Include="Utils\StringUtil.cpp" />
     <ClCompile Include="Enum\ERpcTextLanguage.cpp" />
     <ClCompile Include="Enum\ERpcTextType.cpp" />
-    <ClCompile Include="Utils\UnicodeUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -52,7 +51,7 @@
     <ClInclude Include="Utils\StringUtil.h" />
     <ClInclude Include="Enum\ERpcTextLanguage.h" />
     <ClInclude Include="Enum\ERpcTextType.h" />
-    <ClInclude Include="Utils\UnicodeUtil.h" />
+    <ClInclude Include="Utils\UString.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">

@@ -51,7 +51,7 @@ using json = nlohmann::json;
 #include <Utils/Config.h>
 #include <Utils/MacroUtil.h>
 #include <Utils/StringUtil.h>
-#include <Utils/UnicodeUtil.h>
+#include <Utils/UString.hpp>
 
 // Manager
 #include <Manager/DiscordManager.h>

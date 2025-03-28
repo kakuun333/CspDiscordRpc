@@ -149,7 +149,6 @@ del /q "$(OutDir)RestartAgent.exe"</Command>
       <DependentUpon>TurnOnDiscordRpcDialogPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
-    <ClInclude Include="Utils\UnicodeUtil.h" />
     <ClInclude Include="Utils\StringUtil.h" />
     <ClInclude Include="Utils\Config.h" />
     <ClInclude Include="Utils\DataTypeConvert.h" />
@@ -163,6 +162,7 @@ del /q "$(OutDir)RestartAgent.exe"</Command>
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="Utils\TSingletonMutex.hpp" />
+    <ClInclude Include="Utils\UString.hpp" />
     <ClInclude Include="WinRTClass\CspWorkCacheData.h" />
   </ItemGroup>
   <ItemGroup>
@@ -203,7 +203,6 @@ del /q "$(OutDir)RestartAgent.exe"</Command>
       <DependentUpon>TurnOnDiscordRpcDialogPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
-    <ClCompile Include="Utils\UnicodeUtil.cpp" />
     <ClCompile Include="Utils\StringUtil.cpp" />
     <ClCompile Include="Utils\Config.cpp" />
     <ClCompile Include="Utils\DataTypeConvert.cpp" />

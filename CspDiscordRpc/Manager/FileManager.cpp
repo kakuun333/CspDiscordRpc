@@ -18,12 +18,12 @@ json FileManager::ReadJson(const std::filesystem::path& path)
         }
         else
         {
-            std::cout << u8"無法開啟檔案："s << path.string() << std::endl;
+            std::cout << UString(UTEXT("無法開啟檔案：")) << path.string() << std::endl;
         }
     }
     else
     {
-        std::cout << u8"檔案不存在："s << path.string() << std::endl;
+        std::cout << UString(UTEXT("檔案不存在：")) << path.string() << std::endl;
     }
 
     return {}; // 如果失敗，返回一個空的 JSON 物件
@@ -45,12 +45,12 @@ json FileManager::ReadJson(const std::filesystem::path& path)
         }
         else
         {
-            std::cout << u8"無法開啟檔案："s << path.string() << std::endl;
+            std::cout << UString(UTEXT("無法開啟檔案：")) << path.string() << std::endl;
         }
     }
     else
     {
-        std::cout << u8"檔案不存在："s << path.string() << std::endl;
+        std::cout << UString(UTEXT("檔案不存在：")) << path.string() << std::endl;
     }
 
     return {}; // 如果失敗，返回一個空字串
@@ -72,15 +72,15 @@ void FileManager::WriteFile(const std::filesystem::path& path, std::string_view 
         {
             outputFile << stringToWrite << std::endl;
             outputFile.close();
-            std::cout << u8"成功寫入："s << path.string() << std::endl;
+            std::cout << UString(UTEXT("成功寫入：")) << path.string() << std::endl;
         }
         else
         {
-            std::cout << u8"無法開啟檔案進行寫入："s << path.string() << std::endl;
+            std::cout << UString(UTEXT("無法開啟檔案進行寫入：")) << path.string() << std::endl;
         }
     }
     catch (const std::filesystem::filesystem_error& e)
     {
-        std::cout << u8"檔案系統錯誤："s << path.string() << std::endl;
+        std::cout << UString(UTEXT("檔案系統錯誤：")) << path.string() << std::endl;
     }
 }

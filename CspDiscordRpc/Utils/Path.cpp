@@ -28,7 +28,7 @@ std::filesystem::path FindFirstFolderWithFile(const std::filesystem::path& rootP
     {
         if (!std::filesystem::exists(rootPath) || !std::filesystem::is_directory(rootPath))
         {
-            std::cerr << u8"錯誤: 目錄不存在或不是資料夾\n"s;
+            std::cerr << UString(UTEXT("錯誤: 目錄不存在或不是資料夾\n"));
             return "";
         }
 
@@ -57,7 +57,7 @@ std::filesystem::path FindFirstFolderWithFile(const std::filesystem::path& rootP
     }
     catch (const std::filesystem::filesystem_error& e)
     {
-        std::cerr << u8"發生錯誤: "s << e.what() << '\n';
+        std::cerr << UString(UTEXT("發生錯誤: ")) << e.what() << '\n';
     }
 
     return ""; // 若未找到則回傳空字串

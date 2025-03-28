@@ -6,10 +6,8 @@ void ConsoleManager::Create(const std::wstring& consoleName/* = L"Console"*/)
 	if (this->m_hasConsole) return;
 	this->m_hasConsole = true;
 
-	std::ios::sync_with_stdio(false);
-	std::locale::global(std::locale(""));
-	std::cout.imbue(std::locale());
-	std::wcout.imbue(std::locale());
+	// 設置全域 locale 為 UTF-8
+	std::locale::global(std::locale("en_US.UTF-8"));
 
 	this->ClearIoState();
 
@@ -18,17 +16,18 @@ void ConsoleManager::Create(const std::wstring& consoleName/* = L"Console"*/)
 		AllocConsole();
 		SetConsoleTitle(consoleName.c_str());
 
-		// 設置 CodePage
+		// 設置控制台輸出代碼頁為 UTF-8
 		SetConsoleOutputCP(CP_UTF8);
+
+		// 啟用 ANSI 編碼的控制台
+		SetConsoleCP(CP_UTF8);
 
 		// 重新導向 STDIO 流
 		this->RedirectIoToConsole();
-
-		SetConsoleTitle(consoleName.c_str());
 	}
 
 
-	std::cout << "Console created successfully!" << std::endl;
+	std::cout << "Console was created successfully!" << std::endl;
 }
 
 void ConsoleManager::Destroy()
@@ -44,6 +43,8 @@ void ConsoleManager::Destroy()
 
 		// 關閉控制台視窗句柄
 		PostMessage(consoleWindow, WM_CLOSE, 0, 0);
+
+		std::locale::global(std::locale("")); // 還原 locale
 	}
 
 	this->m_hasConsole = false;
