@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "SettingsPage.xaml.h"
 #if __has_include("SettingsPage.g.cpp")
 #include "SettingsPage.g.cpp"
@@ -22,7 +22,7 @@ SettingsPage::SettingsPage()
 {
     // Xaml objects should not call InitializeComponent during construction.
     // See https://github.com/microsoft/cppwinrt/tree/master/nuget#initializecomponent
-    this->NavigationCacheMode(winrt::NavigationCacheMode::Required); // §Ö¨ú³o­Ó Page¡A¨¾¤î­«·s¸ü¤J¡]¥²¶·¦b«Øºc¨ç¦¡¤¤³]©w¡^¡C
+    this->NavigationCacheMode(winrt::NavigationCacheMode::Required); // å¿«å–é€™å€‹ Pageï¼Œé˜²æ­¢é‡æ–°è¼‰å…¥ï¼ˆå¿…é ˆåœ¨å»ºæ§‹å‡½å¼ä¸­è¨­å®šï¼‰ã€‚
 }
 
 void SettingsPage::InitializeComponent()
@@ -46,7 +46,7 @@ void SettingsPage::DebugModeToggleSwitch_Toggled(winrt::IInspectable const& send
         config->DebugMode = toggleSwitch.IsOn();
 
         // ConsoleManager
-        if (!consoleManager->IsConsoleExist())
+        if (!consoleManager->HasConsole())
         {
             consoleManager->Create();
         }
@@ -55,7 +55,7 @@ void SettingsPage::DebugModeToggleSwitch_Toggled(winrt::IInspectable const& send
     {
         config->DebugMode = toggleSwitch.IsOn();
 
-        if (consoleManager->IsConsoleExist())
+        if (consoleManager->HasConsole())
         {
             consoleManager->Destroy();
         }

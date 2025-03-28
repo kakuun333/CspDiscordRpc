@@ -41,7 +41,6 @@ namespace winrt::CspDiscordRpc::implementation
 
         if (config->DebugMode)
         {
-            consoleManager->BlockStdIO();
             consoleManager->Create(L"CspDiscordRpc Console");
         }
     }

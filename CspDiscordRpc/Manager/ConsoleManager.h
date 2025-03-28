@@ -2,23 +2,34 @@
 
 class ConsoleManager : public TSingletonMutex<ConsoleManager>
 {
-private:
-	bool m_isConsoleExist = false;
 public:
-	/*
-	* 創建一個控制台，必須在任何一個 `std::cout` 輸出之前使用`ConsoleManager::BlockStdIO()`
-	* @param CodePage - 頁碼
-	*/
-	void Create(std::wstring const& consoleName = L"Console", UINT const& codePage = CP_UTF8);
 
+	/*
+	* Create a console
+	* @param consoleName - Console Name
+	*/
+	void Create(const std::wstring& consoleName = L"Console");
+
+	/** Destroy the console */
 	void Destroy();
 
-	void BlockStdIO();
+	/** Did Console exist? */
+	bool HasConsole();
 
-	void FreeStdIO();
-public:
-	inline bool IsConsoleExist() { return m_isConsoleExist; }
+	/*
+	* Set IO state
+	* @param state IO state
+	*/
+	void SetIoState(std::ios_base::iostate state = 0);
+
+	/** Clear IO state  */
+	void ClearIoState();
+
+	/** Redirect IO to console  */
+	void RedirectIoToConsole();
+
 private:
-	void RedirectIOToConsole();
+
+	bool m_hasConsole = false;
 };
 
