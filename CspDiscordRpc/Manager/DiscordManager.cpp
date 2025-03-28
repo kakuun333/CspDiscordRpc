@@ -1,40 +1,40 @@
 ﻿#include "pch.h"
+
+#ifdef _DISCORD_GAME_SDK_H_ // If Discord Game SDK is included
+
 #include "DiscordManager.h"
 
-void DiscordManager::CreateCore()
+void DiscordManager::CreateCore(const discord::ClientId& clientId)
 {
-	if (this->IsCoreExist()) return;
+	if (this->HasCore()) return;
 
 	discord::Core* core{};
-	discord::ClientId clientId{ 0 };
-
-	clientId = CLIENT_ID;
-
 	discord::Result createResult = discord::Core::Create(clientId, DiscordCreateFlags_NoRequireDiscord, &core);
-	m_core.reset(core);
+	m_core.reset(core); // Assign the created discord::Core* to m_core
+
 	if (!m_core)
 	{
-		std::cout << "Failed to instantiate discord core! (err " << static_cast<int>(createResult) << ")\n";
+		std::cout << "Failed to instantiate discord core!" << static_cast<int>(createResult) << std::endl;
 		return;
 	}
 
-	this->CheckResult(ResultGetter::Core, createResult);
+	std::cout << "DiscordResult: " << this->ResultToString(createResult) << std::endl;
 
 	core->UserManager().OnCurrentUserUpdate.Connect([this]()
 	{
 		m_core->UserManager().GetCurrentUser(&m_currentUser);
 
-		std::cout << std::format("Current user updated: {}\n", m_currentUser.GetUsername());
+		std::cout << "Current user updated: " << m_currentUser.GetUsername() << std::endl;
 
 		m_core->UserManager().GetUser(m_currentUser.GetId(), [this](discord::Result result, discord::User const& user)
 		{
-			this->CheckResult(ResultGetter::User, result);
+			std::cout << "DiscordResult: " << this->ResultToString(result) << std::endl;
 		});
 	});
 
 	m_stopActivityEvent.SetHandler([this]()
 	{
-		this->ClearActivity();
+		this->DestroyCore();
 	});
 
 	// Set start time
@@ -53,11 +53,11 @@ void DiscordManager::CreateCore()
 	}).detach();
 }
 
-
-
-void DiscordManager::UpdateActivity(const std::string& state, const std::string& details, const std::string& largeImageText, const std::string& smallImageSource, const std::string& smallImageText, discord::ActivityType activityType/* = discord::ActivityType::Playing*/)
+void DiscordManager::UpdateActivity(const std::string& state, const std::string& details,
+									const std::string& largeImageSource, const std::string& largeImageText,
+									const std::string& smallImageSource, const std::string& smallImageText, discord::ActivityType activityType/* = discord::ActivityType::Playing*/)
 {
-	if (!this->IsCoreExist()) return;
+	if (!this->HasCore()) return;
 
 	discord::Activity activity{};
 
@@ -67,7 +67,7 @@ void DiscordManager::UpdateActivity(const std::string& state, const std::string&
 	activity.SetDetails(details.c_str());
 
 	// LargeImage
-	activity.GetAssets().SetLargeImage("https://cdn.discordapp.com/app-icons/1351785436850163733/be7cdabb8b164c564f9e844ba209a2b6.png?size=256");
+	activity.GetAssets().SetLargeImage(largeImageSource.c_str());
 	activity.GetAssets().SetLargeText(largeImageText.c_str());
 
 	// SmallImage
@@ -84,7 +84,7 @@ void DiscordManager::UpdateActivity(const std::string& state, const std::string&
 
 	m_core->ActivityManager().UpdateActivity(activity, [this](discord::Result result)
 	{
-		this->CheckResult(ResultGetter::Activity, result);
+		std::cout << "DiscordResult: " << this->ResultToString(result) << std::endl;
 	});
 
 }
@@ -93,66 +93,74 @@ void DiscordManager::StopActivity()
 {
 	m_core->ActivityManager().ClearActivity([this](discord::Result result)
 	{
-		this->CheckResult(ResultGetter::Activity, result);
+		std::cout << "DiscordResult: " << this->ResultToString(result) << std::endl;
 		m_callbackStopped = true;
 	});
 }
 
-
-void DiscordManager::ClearActivity()
+bool DiscordManager::HasCore()
 {
-	if (!this->IsCoreExist()) return;
+	return m_core.get() != nullptr ? true : false;
+}
+
+void DiscordManager::DestroyCore()
+{
+	if (!this->HasCore()) return;
 
 	m_core->~Core();
 	m_core.reset(nullptr); // Release and delete the owned discord::Core*
 }
 
-void DiscordManager::CheckResult(ResultGetter const& resultGetter, discord::Result const& result) const
+std::string DiscordManager::ResultToString(const discord::Result& result)
 {
-	std::string getter;
-	std::string discordResult;
-
-	switch (resultGetter)
+	switch (result) 
 	{
-		case ResultGetter::Core:
-		{
-			getter = "Core";
-			break;
-		}
-		case ResultGetter::User:
-		{
-			getter = "User";
-			break;
-		}
-		case ResultGetter::Activity:
-		{
-			getter = "Activity";
-			break;
-		}
+		case discord::Result::Ok: return "Ok";
+		case discord::Result::ServiceUnavailable: return "ServiceUnavailable";
+		case discord::Result::InvalidVersion: return "InvalidVersion";
+		case discord::Result::LockFailed: return "LockFailed";
+		case discord::Result::InternalError: return "InternalError";
+		case discord::Result::InvalidPayload: return "InvalidPayload";
+		case discord::Result::InvalidCommand: return "InvalidCommand";
+		case discord::Result::InvalidPermissions: return "InvalidPermissions";
+		case discord::Result::NotFetched: return "NotFetched";
+		case discord::Result::NotFound: return "NotFound";
+		case discord::Result::Conflict: return "Conflict";
+		case discord::Result::InvalidSecret: return "InvalidSecret";
+		case discord::Result::InvalidJoinSecret: return "InvalidJoinSecret";
+		case discord::Result::NoEligibleActivity: return "NoEligibleActivity";
+		case discord::Result::InvalidInvite: return "InvalidInvite";
+		case discord::Result::NotAuthenticated: return "NotAuthenticated";
+		case discord::Result::InvalidAccessToken: return "InvalidAccessToken";
+		case discord::Result::ApplicationMismatch: return "ApplicationMismatch";
+		case discord::Result::InvalidDataUrl: return "InvalidDataUrl";
+		case discord::Result::InvalidBase64: return "InvalidBase64";
+		case discord::Result::NotFiltered: return "NotFiltered";
+		case discord::Result::LobbyFull: return "LobbyFull";
+		case discord::Result::InvalidLobbySecret: return "InvalidLobbySecret";
+		case discord::Result::InvalidFilename: return "InvalidFilename";
+		case discord::Result::InvalidFileSize: return "InvalidFileSize";
+		case discord::Result::InvalidEntitlement: return "InvalidEntitlement";
+		case discord::Result::NotInstalled: return "NotInstalled";
+		case discord::Result::NotRunning: return "NotRunning";
+		case discord::Result::InsufficientBuffer: return "InsufficientBuffer";
+		case discord::Result::PurchaseCanceled: return "PurchaseCanceled";
+		case discord::Result::InvalidGuild: return "InvalidGuild";
+		case discord::Result::InvalidEvent: return "InvalidEvent";
+		case discord::Result::InvalidChannel: return "InvalidChannel";
+		case discord::Result::InvalidOrigin: return "InvalidOrigin";
+		case discord::Result::RateLimited: return "RateLimited";
+		case discord::Result::OAuth2Error: return "OAuth2Error";
+		case discord::Result::SelectChannelTimeout: return "SelectChannelTimeout";
+		case discord::Result::GetGuildTimeout: return "GetGuildTimeout";
+		case discord::Result::SelectVoiceForceRequired: return "SelectVoiceForceRequired";
+		case discord::Result::CaptureShortcutAlreadyListening: return "CaptureShortcutAlreadyListening";
+		case discord::Result::UnauthorizedForAchievement: return "UnauthorizedForAchievement";
+		case discord::Result::InvalidGiftCode: return "InvalidGiftCode";
+		case discord::Result::PurchaseError: return "PurchaseError";
+		case discord::Result::TransactionAborted: return "TransactionAborted";
+		default: return "UnknownResult";
 	}
-
-	switch (result)
-	{
-		case discord::Result::Ok:
-		{
-			discordResult = "Ok";
-			break;
-		}
-		case discord::Result::TransactionAborted:
-		{
-			discordResult = "TransactionAborted";
-			break;
-		}
-		default:
-		{
-			discordResult = std::to_string(static_cast<int>(result));
-		}
-	}
-
-	std::cout << std::format("ResultGetter: {}, DiscordResult: {}\n", getter, discordResult);
 }
 
-bool DiscordManager::IsCoreExist()
-{
-	return m_core.get() != nullptr ? true : false;
-}
+#endif _DISCORD_GAME_SDK_H_ // If Discord Game SDK is included

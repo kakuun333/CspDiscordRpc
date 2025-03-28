@@ -104,10 +104,11 @@ void HomePage::DiscordRpcToggleSwitch_Toggled(winrt::IInspectable const& sender,
 
     if (toggleSwitch.IsOn())
     {
-        discordManager->CreateCore();
+        discordManager->CreateCore(CSP_DISCORD_CLIENT_ID);
         discordManager->UpdateActivity(
             winrt::to_string(this->State()),
             winrt::to_string(this->Details()),
+            CSP_ICON_URL,
             winrt::to_string(this->LargeImageText()),
             winrt::to_string(this->SmallImageSource()),
             winrt::to_string(this->SmallImageText())
@@ -332,7 +333,7 @@ winrt::IAsyncAction HomePage::Button_UpdateRpc_Click(winrt::IInspectable const& 
     }
 
     DiscordManager* discordManager = DiscordManager::GetInstance();
-    if (!discordManager->IsCoreExist())
+    if (!discordManager->HasCore())
     {
 		std::cout << "Discord Core not exist!" << std::endl;
         co_return;
@@ -341,6 +342,7 @@ winrt::IAsyncAction HomePage::Button_UpdateRpc_Click(winrt::IInspectable const& 
     discordManager->UpdateActivity(
         winrt::to_string(this->State()),
         winrt::to_string(this->Details()),
+        CSP_ICON_URL,
         winrt::to_string(this->LargeImageText()),
         winrt::to_string(this->SmallImageSource()),
         winrt::to_string(this->SmallImageText())

@@ -58,6 +58,10 @@ namespace winrt::CspDiscordRpc::implementation
 
     private: // Static inline constant
 
+		static inline const discord::ClientId CSP_DISCORD_CLIENT_ID = 1351785436850163733;
+
+        static inline const std::string CSP_ICON_URL = "https://cdn.discordapp.com/app-icons/1351785436850163733/be7cdabb8b164c564f9e844ba209a2b6.png?size=256";
+
         static inline const std::filesystem::path CSP_WORKS_CACHE_ROOT_PATH = (util::GetAppDataPath() / "CELSYSUserData/CELSYS/CLIPStudioCommon/Document");
 
     private: // Member variable
