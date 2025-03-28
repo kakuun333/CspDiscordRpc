@@ -7,7 +7,7 @@
    A Discord Rich Presence Client for CLIP STUDIO PAINT.
 </h4>
 <h3 align="center">
-  <a href="./README_TW.md">繁體中文</a>｜<a href="./README_JP.md">日本語</a>
+  <a href="./README_zh-TW.md">繁體中文</a>｜<a href="./README_ja-JP.md">日本語</a>
 </h3>
 
 ## Features
