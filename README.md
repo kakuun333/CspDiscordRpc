@@ -32,7 +32,7 @@
 1. Execute `CspDiscordRpc.exe`  
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Home.png">   
 
-2. (Optional but recommend) Choose a CSP work for more information   
+2. (Optional but recommend) Choose a CSP work to get more information for Discord Presence   
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/ChooseWork.png">  
 
 3. Select a RPC Text Language that you like
