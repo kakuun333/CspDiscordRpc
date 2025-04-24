@@ -6,7 +6,7 @@
 
 // Windows API
 #ifdef _WIN32
-    #include <Windows.h>
+#include <Windows.h>
 #endif
 
 using ASCICHAR  =   char;
@@ -14,20 +14,20 @@ using WIDECHAR  =   wchar_t;
 using CHAR32    =   char32_t;
 
 #ifdef _WIN32
-    using UNI_CHAR = WIDECHAR;
-    #define UTEXT(str) L##str  // Windows: L"string"
+using UNI_CHAR = WIDECHAR;
+#define UTEXT(str) L##str  // Windows: L"string"
 #else
-    using UNI_CHAR = CHAR32;
-    #define UTEXT(str) U##str  // Linux/macOS: U"string"
+using UNI_CHAR = CHAR32;
+#define UTEXT(str) U##str  // Linux/macOS: U"string"
 #endif
 
-//#ifdef _WIN64
-//    using SIZE_T    =   unsigned __int64; // Declares unsigned 64-bit integer
-//    using SSIZE_T   =   __int64;
-//#else
-//    using SIZE_T    =   unsigned long
-//    using SSIZE_T   =   long;
-//#endif
+#ifdef _WIN64
+using SIZE_T    =   unsigned __int64; // Declares unsigned 64-bit integer
+using SSIZE_T   =   __int64;
+#else
+using SIZE_T    =   unsigned long
+using SSIZE_T   =   long;
+#endif
 
 
 class UString
@@ -43,7 +43,7 @@ public: // Constructor
     /** Constructor from ( UNI_CHAR* ) */
     UString(const UNI_CHAR* str)
     {
-        size_t Length = std::char_traits<UNI_CHAR>::length(str);
+        SIZE_T Length = std::char_traits<UNI_CHAR>::length(str);
         M_Data.assign(str, str + Length + 1);  // Copy string, include null character
     }
 
@@ -56,7 +56,7 @@ public:
     }
 
     /** Get string length */
-    size_t Length() const
+    SIZE_T Length() const
     {
         return M_Data.size() - 1; // Minus null character
     }
@@ -65,14 +65,14 @@ public:
     std::string ToString() const
     {
         #ifdef _WIN32
-            // Windows: 使用 WideCharToMultiByte 進行轉換
-            int requiredSize = WideCharToMultiByte(CP_UTF8, 0, reinterpret_cast<LPCWSTR>(M_Data.data()), -1, nullptr, 0, nullptr, nullptr);
-            std::string result(requiredSize - 1, '\0');
-            WideCharToMultiByte(CP_UTF8, 0, reinterpret_cast<LPCWSTR>(M_Data.data()), -1, &result[0], requiredSize, nullptr, nullptr);
-            return result;
+        // Windows: 使用 WideCharToMultiByte 進行轉換
+        int requiredSize = WideCharToMultiByte(CP_UTF8, 0, reinterpret_cast<LPCWSTR>(M_Data.data()), -1, nullptr, 0, nullptr, nullptr);
+        std::string result(requiredSize - 1, '\0');
+        WideCharToMultiByte(CP_UTF8, 0, reinterpret_cast<LPCWSTR>(M_Data.data()), -1, &result[0], requiredSize, nullptr, nullptr);
+        return result;
         #else
-            // UTF-32 轉換到 UTF-8
-            throw std::runtime_error("Other platforms are not support yet");
+        // UTF-32 轉換到 UTF-8
+        throw std::runtime_error("Other platforms are not support yet");
         #endif
     }
 
@@ -123,22 +123,22 @@ public:
         UString result = *this;
 
         #ifdef _WIN32
-            if (!result.M_Data.empty())
-            {
-                CharUpperBuffW(reinterpret_cast<LPWSTR>(result.M_Data.data()), result.M_Data.size() - 1);
-            }
+        if (!result.M_Data.empty())
+        {
+            CharUpperBuffW(reinterpret_cast<LPWSTR>(result.M_Data.data()), result.M_Data.size() - 1);
+        }
         #else
-            std::locale loc("");
-            auto& facet = std::use_facet<std::ctype<UNI_CHAR>>(loc);
+        std::locale loc("");
+        auto& facet = std::use_facet<std::ctype<UNI_CHAR>>(loc);
 
-            for (auto& ch : result.M_Data)
+        for (auto& ch : result.M_Data)
+        {
+            // Avoid to convert null character
+            if (ch != 0) 
             {
-                // Avoid to convert null character
-                if (ch != 0) 
-                {
-                    ch = facet.toupper(ch);
-                }
+                ch = facet.toupper(ch);
             }
+        }
         #endif
 
         return result;
@@ -150,28 +150,28 @@ public:
         UString result = *this;
 
         #ifdef _WIN32
-            if (!result.M_Data.empty())
-            {
-                CharLowerBuffW(reinterpret_cast<LPWSTR>(result.M_Data.data()), result.M_Data.size() - 1);
-            }
+        if (!result.M_Data.empty())
+        {
+            CharLowerBuffW(reinterpret_cast<LPWSTR>(result.M_Data.data()), result.M_Data.size() - 1);
+        }
         #else
-            std::locale loc("");
-            auto& facet = std::use_facet<std::ctype<UNI_CHAR>>(loc);
+        std::locale loc("");
+        auto& facet = std::use_facet<std::ctype<UNI_CHAR>>(loc);
 
-            for (auto& ch : result.M_Data)
+        for (auto& ch : result.M_Data)
+        {
+            // avoid to convert null character
+            if (ch != 0) 
             {
-                // avoid to convert null character
-                if (ch != 0) 
-                {
-                    ch = facet.tolower(ch);
-                }
+                ch = facet.tolower(ch);
             }
+        }
         #endif
 
         return result;
     }
 
-    
+
     bool StartsWith(const UString& prefix) const
     {
         // 檢查前綴長度是否大於字串本身
@@ -181,7 +181,7 @@ public:
         }
 
         // 比較前綴字元
-        for (size_t i = 0; i < prefix.Length(); ++i)
+        for (SIZE_T i = 0; i < prefix.Length(); ++i)
         {
             if (M_Data[i] != prefix.M_Data[i])
             {
@@ -225,7 +225,7 @@ public:
 
         while (!result.M_Data.empty())
         {
-            size_t lastIndex = result.M_Data.size() - 1;
+            SIZE_T lastIndex = result.M_Data.size() - 1;
 
             // 檢查倒數第二個字符（假設最後一個是 \0）
             if (lastIndex >= 1)  // 確保至少有 2 個字符（1 個字符 + \0）
