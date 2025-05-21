@@ -22,7 +22,7 @@
 ## 要求
 
 1. OS: Windows 10 Version 17763.0 以降
-2. 最新の [Microsoft Visual C++ Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) がインストールしている (Architecture x64)
+2. 最新の [Microsoft Visual C++ Redistributable](https://learn.microsoft.com/ja-jp/cpp/windows/latest-supported-vc-redist?view=msvc-170) がインストールしている (Architecture x64)
 
 ## 使い方
 1. `CspDiscordRpc.exe` を実行する  
