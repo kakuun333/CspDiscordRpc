@@ -28,7 +28,7 @@
 1. `CspDiscordRpc.exe` を実行する  
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Home.png">   
 
-2. (任意だがオススメします) より多くの情報を表示するためにクリスタの作品を選ぶ   
+2. (任意ですがオススメします) より多くの情報を表示するためにクリスタの作品を選ぶ   
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/ChooseWork.png">  
 
 3. 好きな言語を選ぶ
