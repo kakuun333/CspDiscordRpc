@@ -12,7 +12,7 @@
 
 ## Features
 1. Search exist CSP works for more information
-   - Work Name
+   - Name of Work
    - Total Working Time
    - CSP Version of Work (Large Image Text)
 
