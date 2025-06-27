@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "MainWindow.g.h"
 
@@ -10,8 +10,8 @@ namespace winrt::CspDiscordRpc::implementation
 
         void InitializeComponent();
 
+        winrt::Windows::Foundation::IAsyncAction ShowTrayDialog();
 
-    public:
         void MainNavigationView_ItemInvoked(winrt::Microsoft::UI::Xaml::Controls::NavigationView const& sender, winrt::Microsoft::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs const& args);
     };
 }

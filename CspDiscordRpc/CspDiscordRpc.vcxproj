@@ -161,8 +161,13 @@ del /q "$(OutDir)RestartAgent.exe"</Command>
     <ClInclude Include="MainWindow.xaml.h">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </ClInclude>
+    <ClInclude Include="TrayDialogPage.xaml.h">
+      <DependentUpon>TrayDialogPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="Utils\TSingletonMutex.hpp" />
     <ClInclude Include="Utils\UString.hpp" />
+    <ClInclude Include="Utils\WinUI3Util.h" />
     <ClInclude Include="WinRTClass\CspWorkCacheData.h" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +183,9 @@ del /q "$(OutDir)RestartAgent.exe"</Command>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="TurnOnDiscordRpcDialogPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TrayDialogPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
@@ -218,6 +226,11 @@ del /q "$(OutDir)RestartAgent.exe"</Command>
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="TrayDialogPage.xaml.cpp">
+      <DependentUpon>TrayDialogPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="Utils\WinUI3Util.cpp" />
     <ClCompile Include="WinRTClass\CspWorkCacheData.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -239,6 +252,10 @@ del /q "$(OutDir)RestartAgent.exe"</Command>
     </Midl>
     <Midl Include="TurnOnDiscordRpcDialogPage.idl">
       <DependentUpon>TurnOnDiscordRpcDialogPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="TrayDialogPage.idl">
+      <DependentUpon>TrayDialogPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="WinRTClass\CspWorkCacheData.idl" />

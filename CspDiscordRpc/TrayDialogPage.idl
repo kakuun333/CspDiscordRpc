@@ -1,0 +1,9 @@
+namespace CspDiscordRpc
+{
+    [default_interface]
+    runtimeclass TrayDialogPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        TrayDialogPage();
+        Int32 MyProperty;
+    }
+}

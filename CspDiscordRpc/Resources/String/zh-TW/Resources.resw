@@ -147,4 +147,19 @@
   <data name="TextBlock_TurnOnDiscordRpcFirst.Text" xml:space="preserve">
     <value>請先開啟 Discord RPC</value>
   </data>
+  <data name="CheckBox_DoNotShowAgain.Content" xml:space="preserve">
+    <value>下次不再顯示</value>
+  </data>
+  <data name="RadioButton_Exit.Content" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="RadioButton_MinimizeToSystemTray.Content" xml:space="preserve">
+    <value>最小化視窗到工作列</value>
+  </data>
+  <data name="ClickingCloseButton" xml:space="preserve">
+    <value>關閉視窗時</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
 </root>

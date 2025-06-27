@@ -16,6 +16,7 @@
     <Page Include="TurnOnDiscordRpcDialogPage.xaml">
       <Filter>WinUI</Filter>
     </Page>
+    <Page Include="TrayDialogPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
@@ -35,6 +36,7 @@
     <ClCompile Include="Utils\StringUtil.cpp" />
     <ClCompile Include="Enum\ERpcTextLanguage.cpp" />
     <ClCompile Include="Enum\ERpcTextType.cpp" />
+    <ClCompile Include="Utils\WinUI3Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -52,6 +54,7 @@
     <ClInclude Include="Enum\ERpcTextLanguage.h" />
     <ClInclude Include="Enum\ERpcTextType.h" />
     <ClInclude Include="Utils\UString.hpp" />
+    <ClInclude Include="Utils\WinUI3Util.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">

@@ -25,7 +25,21 @@
 #include <winrt/Microsoft.UI.Xaml.Navigation.h>
 #include <winrt/Microsoft.UI.Xaml.Shapes.h>
 #include <winrt/Microsoft.UI.Dispatching.h>
+#include <winrt/Microsoft.UI.Windowing.h>
+
+
+// Win32 API / WinUI COM Interop
+#include <microsoft.ui.xaml.window.h>
+
+#include <Shellapi.h> // For tray icon
+#pragma comment(lib, "Shell32.lib")
+
+#include <CommCtrl.h>
+#pragma comment(lib, "Comctl32.lib")
+
+// WIL
 #include <wil/cppwinrt_helpers.h>
+
 
 // STL
 #include <iostream>
@@ -52,6 +66,7 @@ using json = nlohmann::json;
 #include <Utils/MacroUtil.h>
 #include <Utils/StringUtil.h>
 #include <Utils/UString.hpp>
+#include <Utils/WinUI3Util.h>
 
 // Manager
 #include <Manager/DiscordManager.h>

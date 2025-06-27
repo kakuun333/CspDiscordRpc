@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="CspDiscordRpc.TrayDialogPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CspDiscordRpc"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="25">
+            <StackPanel Orientation="Horizontal" Spacing="50">
+                <RadioButton x:Name="RadioButton_MinimizeToSystemTray" x:Uid="RadioButton_MinimizeToSystemTray" Content="Minimize to System Tray" GroupName="TrayOptions" IsChecked="True" Checked="RadioButton_MinimizeToSystemTray_Checked"/>
+                <RadioButton x:Name="RadioButton_Exit" x:Uid="RadioButton_Exit" Content="Exit" GroupName="TrayOptions" Checked="RadioButton_Exit_Checked"/>
+            </StackPanel>
+            <CheckBox x:Name="CheckBox_DoNotShowAgain" x:Uid="CheckBox_DoNotShowAgain" Content="Do not show again" Checked="CheckBox_DoNotShowAgain_Checked" Unchecked="CheckBox_DoNotShowAgain_Unchecked"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

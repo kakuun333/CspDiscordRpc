@@ -147,4 +147,19 @@
   <data name="TextBlock_TurnOnDiscordRpcFirst.Text" xml:space="preserve">
     <value>Please turn on Discord RPC first.</value>
   </data>
+  <data name="CheckBox_DoNotShowAgain.Content" xml:space="preserve">
+    <value>Do not show again</value>
+  </data>
+  <data name="RadioButton_Exit.Content" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="RadioButton_MinimizeToSystemTray.Content" xml:space="preserve">
+    <value>Minimize to System Tray</value>
+  </data>
+  <data name="ClickingCloseButton" xml:space="preserve">
+    <value>Clicking Close Button</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
 </root>

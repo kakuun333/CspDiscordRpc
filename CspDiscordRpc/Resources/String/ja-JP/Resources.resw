@@ -147,4 +147,19 @@
   <data name="TextBlock_TurnOnDiscordRpcFirst.Text" xml:space="preserve">
     <value>先に Discord RPC を開けてください。</value>
   </data>
+  <data name="CheckBox_DoNotShowAgain.Content" xml:space="preserve">
+    <value>次回は表示しない</value>
+  </data>
+  <data name="RadioButton_Exit.Content" xml:space="preserve">
+    <value>終了する</value>
+  </data>
+  <data name="RadioButton_MinimizeToSystemTray.Content" xml:space="preserve">
+    <value>タスクトレイへ最小化</value>
+  </data>
+  <data name="ClickingCloseButton" xml:space="preserve">
+    <value>画面を閉じる時</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
 </root>

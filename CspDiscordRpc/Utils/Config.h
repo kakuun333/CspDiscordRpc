@@ -10,6 +10,8 @@ public:
 	// bool
 	bool DebugMode;
 	bool DiscordRPC;
+	bool MinimizeToSystemTray;
+	bool DoNotShowAgain_ClickingCloseButton;
 
 	// std::string
 	std::string CacheDataPath;

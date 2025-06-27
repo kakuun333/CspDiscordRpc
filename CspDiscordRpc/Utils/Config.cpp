@@ -8,6 +8,8 @@ void Config::Update()
 	// bool
 	DebugMode = jsonConfig[GetVariableName(DebugMode)].empty() ? false : jsonConfig[GetVariableName(DebugMode)].get<bool>();
 	DiscordRPC = jsonConfig[GetVariableName(DiscordRPC)].empty() ? false : jsonConfig[GetVariableName(DiscordRPC)].get<bool>();
+	MinimizeToSystemTray = jsonConfig[GetVariableName(MinimizeToSystemTray)].empty() ? false : jsonConfig[GetVariableName(MinimizeToSystemTray)].get<bool>();
+	DoNotShowAgain_ClickingCloseButton = jsonConfig[GetVariableName(DoNotShowAgain_ClickingCloseButton)].empty() ? false : jsonConfig[GetVariableName(DoNotShowAgain_ClickingCloseButton)].get<bool>();
 
 	// std::string
 	CacheDataPath = jsonConfig[GetVariableName(CacheDataPath)].empty() ? "" : jsonConfig[GetVariableName(CacheDataPath)].get<std::string>();
@@ -29,6 +31,8 @@ void Config::WriteToJson()
 	// bool
 	jsonConfig[GetVariableName(DebugMode)] = DebugMode;
 	jsonConfig[GetVariableName(DiscordRPC)] = DiscordRPC;
+	jsonConfig[GetVariableName(MinimizeToSystemTray)] = MinimizeToSystemTray;
+	jsonConfig[GetVariableName(DoNotShowAgain_ClickingCloseButton)] = DoNotShowAgain_ClickingCloseButton;
 
 	// std::string
 	jsonConfig[GetVariableName(CacheDataPath)] = CacheDataPath;
