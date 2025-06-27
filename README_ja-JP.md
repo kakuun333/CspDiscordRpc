@@ -22,13 +22,13 @@
 ## 要求
 
 1. OS: Windows 10 Version 17763.0 以降
-2. 最新の [Microsoft Visual C++ Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) がインストールしている (Architecture x64)
+2. 最新の [Microsoft Visual C++ 再頒布可能パッケージ](https://learn.microsoft.com/ja-jp/cpp/windows/latest-supported-vc-redist?view=msvc-170) がインストールしている (Architecture x64)
 
 ## 使い方
 1. `CspDiscordRpc.exe` を実行する  
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Home.png">   
 
-2. (任意だがオススメします) より多くの情報を表示するためにクリスタの作品を選ぶ   
+2. (任意ですがオススメします) より多くの情報を表示するためにクリスタの作品を選ぶ   
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/ChooseWork.png">  
 
 3. 好きな言語を選ぶ
