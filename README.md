@@ -22,7 +22,7 @@
    - Traditional Chinese
    - Simplified Chinese
 
-## Requirement
+## Requirements
 
 1. OS: Windows 10 version 17763.0 or higher
 2. Latest [Microsoft Visual C++ Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170) Installed (Architecture x64)
