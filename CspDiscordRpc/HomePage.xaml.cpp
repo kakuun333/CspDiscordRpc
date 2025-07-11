@@ -54,6 +54,13 @@ void HomePage::InitializeComponent()
 
     this->SetRpcProperties(cspWorkCacheData);
     TextBlock_ChoosedCspWork().Text(cspWorkCacheData.Name());
+
+
+    // 初始化 Config::CspWorksCacheRootPath
+    if (config->ClipStudioCommonRootPath.empty())
+    {
+        config->ClipStudioCommonRootPath = DEFAULT_CLIPSTUDIO_COMMON_ROOT_PATH.string();
+    }
 }
 
 winrt::hstring HomePage::State()
@@ -122,9 +129,19 @@ void HomePage::DiscordRpcToggleSwitch_Toggled(winrt::IInspectable const& sender,
 
 std::vector<std::filesystem::path> HomePage::GetCspWorkCachePaths()
 {
+	Config* config = Config::GetInstance();
     std::vector<std::filesystem::path> cspWorkCachePaths;
 
-    for (const auto& entry : std::filesystem::directory_iterator(CSP_WORKS_CACHE_ROOT_PATH))
+    const std::filesystem::path clipStudioCommonRootPath = config->ClipStudioCommonRootPath;
+
+    if (clipStudioCommonRootPath.empty())
+    {
+        std::cout << "HomePage::GetCspWorkCachePaths: config->CspWorksCacheRootPath.empty()" << std::endl;
+        return {}; // 返回空的 std::vector
+    }
+
+
+    for (const auto& entry : std::filesystem::directory_iterator(clipStudioCommonRootPath / "Document"))
     {
         // 忽略 檔案
         if (!entry.is_directory()) continue;
@@ -261,7 +278,8 @@ winrt::IAsyncAction HomePage::Button_ChooseCspWork_Click(winrt::IInspectable con
 		//m_largeImageText = winrt::format(L"CLIP STUDIO PAINT Ver.{}", selectedCspWorkCacheData.CspVersion());
 
         // Config
-		config->CacheDataPath = winrt::to_string(selectedCspWorkCacheData.CacheDataPath());
+        config->CacheDataPath = config->CacheDataPath = std::filesystem::path{ winrt::to_string(selectedCspWorkCacheData.CacheDataPath()) }.string();
+
 		config->WriteToJson();
 
         // Update UI

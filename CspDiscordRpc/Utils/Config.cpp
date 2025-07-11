@@ -12,6 +12,7 @@ void Config::Update()
 	DoNotShowAgain_ClickingCloseButton = jsonConfig[GetVariableName(DoNotShowAgain_ClickingCloseButton)].empty() ? false : jsonConfig[GetVariableName(DoNotShowAgain_ClickingCloseButton)].get<bool>();
 
 	// std::string
+	ClipStudioCommonRootPath = jsonConfig[GetVariableName(ClipStudioCommonRootPath)].empty() ? "" : jsonConfig[GetVariableName(ClipStudioCommonRootPath)].get<std::string>();
 	CacheDataPath = jsonConfig[GetVariableName(CacheDataPath)].empty() ? "" : jsonConfig[GetVariableName(CacheDataPath)].get<std::string>();
 	SmallImageSource = jsonConfig[GetVariableName(SmallImageSource)].empty() ? "" : jsonConfig[GetVariableName(SmallImageSource)].get<std::string>();
 	SmallImageText = jsonConfig[GetVariableName(SmallImageText)].empty() ? "" : jsonConfig[GetVariableName(SmallImageText)].get<std::string>();
@@ -35,6 +36,7 @@ void Config::WriteToJson()
 	jsonConfig[GetVariableName(DoNotShowAgain_ClickingCloseButton)] = DoNotShowAgain_ClickingCloseButton;
 
 	// std::string
+	jsonConfig[GetVariableName(ClipStudioCommonRootPath)] = ClipStudioCommonRootPath;
 	jsonConfig[GetVariableName(CacheDataPath)] = CacheDataPath;
 	jsonConfig[GetVariableName(SmallImageSource)] = SmallImageSource;
 	jsonConfig[GetVariableName(SmallImageText)] = SmallImageText;

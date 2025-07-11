@@ -12,6 +12,9 @@
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
 
+            <!-- SolidColorBrush -->
+            <SolidColorBrush x:Key="BorderColor" Color="#1d1d1d"/>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

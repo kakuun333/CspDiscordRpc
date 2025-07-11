@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "SettingsPage.g.h"
 
@@ -11,6 +11,7 @@ namespace winrt::CspDiscordRpc::implementation
         void InitializeComponent();
 
         void DebugModeToggleSwitch_Toggled(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e);
+        void TextBox_ClipStudioCommonRootPath_TextChanged(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Controls::TextChangedEventArgs const& e);
     };
 }
 

@@ -14,6 +14,7 @@ public:
 	bool DoNotShowAgain_ClickingCloseButton;
 
 	// std::string
+	std::string ClipStudioCommonRootPath;
 	std::string CacheDataPath;
 	std::string SmallImageSource;
 	std::string SmallImageText;

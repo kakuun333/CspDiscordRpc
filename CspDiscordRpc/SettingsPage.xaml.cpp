@@ -32,6 +32,9 @@ void SettingsPage::InitializeComponent()
     // Can now access Xaml properties
     Config* config = Config::GetInstance();
     DebugModeToggleSwitch().IsOn(config->DebugMode);
+
+    // TextBox_ClipStudioCommonRootPath
+	TextBox_ClipStudioCommonRootPath().Text(winrt::to_hstring(config->ClipStudioCommonRootPath));
 }
 
 void SettingsPage::DebugModeToggleSwitch_Toggled(winrt::IInspectable const& sender, winrt::RoutedEventArgs const& e)
@@ -64,6 +67,15 @@ void SettingsPage::DebugModeToggleSwitch_Toggled(winrt::IInspectable const& send
     config->WriteToJson();
 }
 
+void SettingsPage::TextBox_ClipStudioCommonRootPath_TextChanged(winrt::IInspectable const& sender, winrt::TextChangedEventArgs const& e)
+{
+	Config* config = Config::GetInstance();
+
+    std::filesystem::path clipStudioCommonRootPath = std::filesystem::path{ winrt::to_string(sender.as<winrt::TextBox>().Text()) };
+
+    config->ClipStudioCommonRootPath = clipStudioCommonRootPath.string();
+    config->WriteToJson();
 }
 
 
+} // namespace winrt::CspDiscordRpc::implementation

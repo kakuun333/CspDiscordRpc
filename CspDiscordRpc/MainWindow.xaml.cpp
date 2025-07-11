@@ -135,7 +135,7 @@ void MainWindow::InitializeComponent()
     // MainWindow 初始化時導向 HomePage
     ContentFrame().Navigate(winrt::xaml_typename<winrt::CspDiscordRpc::HomePage>(), nullptr);
 
-	const winrt::hstring VERSION = L"1.1.0";
+	const winrt::hstring VERSION = L"1.1.1";
     // 添加版本編號
     TitleBarTextBlock().Text(winrt::format(L"{} v{}", TitleBarTextBlock().Text(), VERSION));
 }
