@@ -11,7 +11,7 @@
 </h3>
 
 ## Features
-1. Search exist CSP works for more information
+1. Search existing CSP works for more information
    - Name of Work
    - Total Working Time
    - CSP Version of Work (Large Image Text)
