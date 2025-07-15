@@ -29,10 +29,24 @@ HWND GetWindowHandleByName(const std::string& windowName)
 
     if (hWnd == NULL)
     {
-        std::cout << UString(UTEXT("未找到 CaptureWindow\n"));
+        std::cout << UString(UTEXT("Didn't find the Window\n"));
     }
 
     return hWnd;
+}
+
+void SetWindowSize(winrt::Window const& window, int const& width, int const& height)
+{
+    HWND hwnd = util::GetWindowHandle(window);
+
+    winrt::WindowId windowId = winrt::GetWindowIdFromWindow(hwnd);
+    winrt::AppWindow appWindow = winrt::AppWindow::GetFromWindowId(windowId);
+
+    winrt::SizeInt32 newSize;
+    newSize.Width = width;
+    newSize.Height = height;
+
+    appWindow.Resize(newSize);
 }
 
 void AddTrayIcon(const std::wstring& trayIconTitle, HWND hwnd, NOTIFYICONDATA nid, const UINT& callbackMessage)

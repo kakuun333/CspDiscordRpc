@@ -14,6 +14,7 @@
 #include <winrt/Windows.ApplicationModel.Resources.h>
 #include <winrt/Windows.UI.Xaml.Interop.h>
 #include <winrt/Windows.Storage.h>
+#include <winrt/Microsoft.UI.Interop.h>
 #include <winrt/Microsoft.UI.Composition.h>
 #include <winrt/Microsoft.UI.Xaml.h>
 #include <winrt/Microsoft.UI.Xaml.Controls.h>

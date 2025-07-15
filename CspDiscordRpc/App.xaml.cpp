@@ -53,5 +53,7 @@ namespace winrt::CspDiscordRpc::implementation
     {
         window = make<MainWindow>();
         window.Activate();
+
+        util::SetWindowSize(window, 750, 650);
     }
 }
