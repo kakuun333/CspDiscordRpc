@@ -1,4 +1,4 @@
-﻿import "WinRtClass/CspWorkCacheData.idl";
+﻿import "WinRTClass/CspWorkCacheData.idl";
 
 namespace CspDiscordRpc
 {
