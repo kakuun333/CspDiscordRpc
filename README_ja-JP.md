@@ -1,4 +1,9 @@
 # CspDiscordRpc
+
+> [!WARNING]
+> **このプロジェクトは現在メンテナンスを終了しており、今後更新される予定はありません。**  
+> **最新版は [CspDiscordRpcGd](https://github.com/kakuun333/CspDiscordRpcGd) をご利用ください。**
+
 <p align="center">
   <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Logo.png">
 </p>
@@ -8,6 +13,7 @@
 </h4>
 
 ## 機能
+
 1. 既存のクリスタ作品を自動的に検索して作品の情報収集をする
    - 作品名
    - 総作業時間
@@ -25,18 +31,18 @@
 2. 最新の [Microsoft Visual C++ 再頒布可能パッケージ](https://learn.microsoft.com/ja-jp/cpp/windows/latest-supported-vc-redist?view=msvc-170) がインストールしている (Architecture x64)
 
 ## 使い方
-1. `CspDiscordRpc.exe` を実行する  
-<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Home.png">   
 
-2. (任意ですがオススメします) より多くの情報を表示するためにクリスタの作品を選ぶ   
-<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/ChooseWork.png">  
+1. `CspDiscordRpc.exe` を実行する  
+   <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Home.png">
+
+2. (任意ですがオススメします) より多くの情報を表示するためにクリスタの作品を選ぶ  
+   <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/ChooseWork.png">
 
 3. 好きな言語を選ぶ
 
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_English.png"> 
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_Japanese.png">    
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_TraditionalChinese.png">  
-<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_SimplifiedChinese.png">    
+<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_SimplifiedChinese.png">
 
 4. Discord RPC オプションを起動する
-

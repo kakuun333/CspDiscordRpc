@@ -1,4 +1,9 @@
 # CspDiscordRpc
+
+> [!WARNING]
+> **此專案已不再維護，且未來不會再進行任何更新。**  
+> **請前往 [CspDiscordRpcGd](https://github.com/kakuun333/CspDiscordRpcGd) 取得最新版本。**
+
 <p align="center">
   <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Logo.png">
 </p>
@@ -8,6 +13,7 @@
 </h4>
 
 ## 功能
+
 1. 查詢已存在的 CSP 作品並取得其資訊給 Discord RPC
    - 作品名稱
    - 總作業時長
@@ -25,18 +31,18 @@
 2. 已安裝最新的 [Microsoft Visual C++ Redistributable](https://learn.microsoft.com/zh-tw/cpp/windows/latest-supported-vc-redist?view=msvc-170) （架構 x64）
 
 ## 使用方法
-1. 執行 `CspDiscordRpc.exe`  
-<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Home.png">   
 
-2. （可選但是建議） 選擇已存在的 CSP 作品   
-<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/ChooseWork.png">  
+1. 執行 `CspDiscordRpc.exe`  
+   <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Home.png">
+
+2. （可選但是建議） 選擇已存在的 CSP 作品  
+   <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/ChooseWork.png">
 
 3. 選擇喜歡的 RPC 文字的語言
 
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_English.png"> 
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_Japanese.png">    
 <img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_TraditionalChinese.png">  
-<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_SimplifiedChinese.png">    
+<img src="https://github.com/kakuun333/CspDiscordRpc/raw/document/Images/Rpc_SimplifiedChinese.png">
 
 4. 開啟 Discord RPC 選項
-
